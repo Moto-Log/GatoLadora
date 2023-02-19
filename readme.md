@@ -1,1 +1,1 @@
-eu tenho um pauzao
+Estudos e etc
