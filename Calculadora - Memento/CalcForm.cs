@@ -25,14 +25,22 @@ namespace Calculadora
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            Calculadora calculadora = new Calculadora(txtOperando.Text, lblOp.Text, txtOperador.Text);
+            Calculadora calculadora = new Calculadora(txtOperando.Text, lblOp.Text, txtOperador.Text);//será sempre necessario instanciar novos objetos, para~não envia-los com a mesma assinatura para a pilha e alterar todos os dados;
             memento.Salvar(calculadora);
-            txtResultado.Text = Convert.ToString(calculadora.calcular(Convert.ToDouble(txtOperando.Text), Convert.ToDouble(txtOperador.Text), lblOp.Text));
-            txtOperando.Clear();
-            txtOperando.Focus();
-            btnRefazer.Enabled = false;
-            btnDesfazer.Enabled = true;
-            txtOperador.Enabled = false;
+            try
+            {
+                txtResultado.Text = Convert.ToString(calculadora.calcular(Convert.ToDouble(txtOperando.Text), Convert.ToDouble(txtOperador.Text), lblOp.Text));
+                txtOperando.Clear();
+                txtOperando.Focus();
+                btnRefazer.Enabled = false;
+                btnDesfazer.Enabled = true;
+                txtOperador.Enabled = false;
+            }
+            catch
+            {
+                MessageBox.Show("Reveja seus conceitos", "MIAU!!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); 
+            }
+            
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
@@ -201,7 +209,7 @@ namespace Calculadora
 
         private void btnDesfazer_Click(object sender, EventArgs e)
         {
-            Calculadora calculadora = new Calculadora("","","");
+            Calculadora calculadora = new Calculadora("","","");//sempre instanciamos novos objetos pra não modificar a pilha inteira
             calculadora = memento.desfazer();
             if (calculadora == null)
             {
@@ -218,7 +226,7 @@ namespace Calculadora
 
         private void btnRefazer_Click(object sender, EventArgs e)
         {
-            Calculadora calculadora = new Calculadora("", "", "");
+            Calculadora calculadora = new Calculadora("", "", "");//sempre instanciamos novos objetos pra não modificar a pilha inteira
             calculadora = memento.refazer();
             if (calculadora == null)
             {

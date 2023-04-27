@@ -34,16 +34,13 @@ namespace Calculadora
                 case "/":
                     if (operador == 0)
                     {
-                        MessageBox.Show("Impossivel dividir por 0!" + MessageBoxIcon.Error);
+                        MessageBox.Show("Impossivel dividir por 0!", "MIAAAAu!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                         break;
                     }
                     resultado = operando / operador;
                     break;
                 case "x":
                     resultado = operando * operador;
-                    break;
-                default:
-                    MessageBox.Show("Favor realizar alguma operação!" + MessageBoxIcon.Error);
                     break;
             }
             return resultado;
