@@ -244,6 +244,7 @@ namespace Calculadora
         {
             txtOperador.Clear();
             txtOperando.Clear();
+            txtOperando.Focus();
             lblOp.Text = "";
             txtResultado.Clear();
         }
